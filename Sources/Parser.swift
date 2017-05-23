@@ -27,9 +27,28 @@ struct Parser {
     }
     
     static func lines(ics: String) -> [String] {
-        let NormalizedEOL = "\n"
+        let NormalizedEOL: Character = "\n"
         let unfolded = unfold(ics: ics)
-        let normalized = Regex.LineTerminator.replace(in: unfolded, with: NormalizedEOL)
-        return normalized.components(separatedBy: NormalizedEOL)
+        let normalized = Regex.LineTerminator.replace(in: unfolded, with: String(NormalizedEOL))
+        
+        return normalized.characters.split(separator: NormalizedEOL).map(String.init)
+    }
+    
+    static func keyParamsAndValue(from line: String) -> (key: String, params: [String]?, value: String)? {
+        let valueSplit = line.characters.split(separator: ":", maxSplits: 1)
+        guard valueSplit.count == 2,
+            let vsFirst = valueSplit.first,
+            let vsLast = valueSplit.last else { return nil }
+        
+        let value = String(vsLast)
+        let paramsSplit = vsFirst.split(separator: ";")
+
+        guard paramsSplit.count > 0,
+            let psFirst = paramsSplit.first else { return nil }
+        
+        let params = paramsSplit.count > 1 ? paramsSplit.suffix(from: 1).map(String.init) : nil
+        let key = String(psFirst)
+        
+        return (key, params, value)
     }
 }
