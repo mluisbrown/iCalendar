@@ -8,15 +8,33 @@
 
 import Foundation
 
-struct Parser {
-    struct RegEx {
-        static let fold = "(\r?\n)+[ \t]"
-        static let lineEnding = "\r?\n"
-        static let escComma = "\\,"
-        static let escSemiColon = "\\;"
-        static let escBackslash = "\\\\;"
-        static let escNewline = "\\[nN];"
+struct RegEx {
+    static let fold = "(\r?\n)+[ \t]"
+    static let lineEnding = "\r?\n"
+    static let escComma = "\\,"
+    static let escSemiColon = "\\;"
+    static let escBackslash = "\\\\;"
+    static let escNewline = "\\[nN];"
+}
+
+enum EventValue {
+    case text(String)
+    case date(Date)
+}
+
+struct Context {
+    var inCalendar = false
+    var inEvent = false
+    var values: [String : String]
+    var events: [Event]
+    
+    init() {
+        values = [String : String]()
+        events = [Event]()
     }
+}
+
+struct Parser {
     
     static func lines(ics: String) -> [String] {
         let newLine: Character = "\n"
@@ -49,5 +67,31 @@ struct Parser {
         let key = String(psFirst)
         
         return (key, params, value)
+    }
+    
+    static func parse(ics: String) -> Calendar? {
+        let parsedCtx = lines(ics: ics).reduce(Context()) {
+            ctx, line in
+            guard let kpv = keyParamsAndValue(from: line) else { return ctx }
+            
+            var newCtx = ctx;
+            
+            switch kpv.key {
+            case "BEGIN":
+                newCtx.inCalendar = newCtx.inCalendar || kpv.value == "VCALENDAR"
+                newCtx.inEvent = newCtx.inEvent || kpv.value == "VEVENT"
+            case "END":
+                if newCtx.inEvent {
+                    newCtx.inEvent = false;
+                    newCtx.events.append(Event(with: newCtx.values))
+                }
+            default:
+                break
+            }
+            
+            return newCtx
+        }
+        
+        return Calendar(events: parsedCtx.events)
     }
 }
