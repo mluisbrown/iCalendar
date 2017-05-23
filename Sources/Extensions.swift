@@ -12,4 +12,13 @@ extension String {
     func NSRange() -> NSRange {
         return NSMakeRange(0, self.characters.count)
     }
+        
+    func replace(regex: String, with: String) -> String {
+        do {
+            let nsregex = try NSRegularExpression(pattern: regex, options: .caseInsensitive)
+            return nsregex.stringByReplacingMatches(in: self, options: [], range: self.NSRange(), withTemplate: with)
+        } catch {
+            return self
+        }
+    }
 }

@@ -9,29 +9,28 @@
 import Foundation
 
 struct Parser {
-    enum Regex: String {
-        case Fold = "(\r?\n)+[ \t]"
-        case LineTerminator = "\r?\n"
-        
-        func NSRegularExpression() -> NSRegularExpression {
-            return try! Foundation.NSRegularExpression(pattern: self.rawValue, options: .caseInsensitive)
-        }
-        
-        func replace(in input: String, with: String) -> String {
-            return self.NSRegularExpression().stringByReplacingMatches(in: input, options: [], range: input.NSRange(), withTemplate: with)
-        }
-    }
-    
-    static func unfold(ics: String) -> String {
-        return Regex.Fold.replace(in: ics, with: "")
+    struct RegEx {
+        static let fold = "(\r?\n)+[ \t]"
+        static let lineEnding = "\r?\n"
+        static let escComma = "\\,"
+        static let escSemiColon = "\\;"
+        static let escBackslash = "\\\\;"
+        static let escNewline = "\\[nN];"
     }
     
     static func lines(ics: String) -> [String] {
-        let NormalizedEOL: Character = "\n"
-        let unfolded = unfold(ics: ics)
-        let normalized = Regex.LineTerminator.replace(in: unfolded, with: String(NormalizedEOL))
+        let newLine: Character = "\n"
+        let normalized = ics.replace(regex: RegEx.fold, with: "")
+            .replace(regex: RegEx.lineEnding, with: String(newLine))
         
-        return normalized.characters.split(separator: NormalizedEOL).map(String.init)
+        return normalized.characters.split(separator: newLine).map(String.init)
+    }
+    
+    static func unescape(text: String) -> String {
+        return text.replace(regex: RegEx.escComma, with: "'")
+            .replace(regex: RegEx.escSemiColon, with: ";")
+            .replace(regex: RegEx.escNewline, with: "\n")
+            .replace(regex: RegEx.escBackslash, with: "\\")
     }
     
     static func keyParamsAndValue(from line: String) -> (key: String, params: [String]?, value: String)? {
