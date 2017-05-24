@@ -12,6 +12,10 @@ import Quick
 
 @testable import iCalendar
 
+func testBumdle() -> Bundle {
+    let bundleArray = Bundle.allBundles.filter() { $0.bundlePath.hasSuffix(".xctest") }
+    return bundleArray.first!
+}
 
 class ParserSpec: QuickSpec {
     override func spec() {
@@ -68,6 +72,22 @@ class ParserSpec: QuickSpec {
                 expect(kpv?.key).to(equal("BEGIN"))
                 expect(kpv?.value).to(equal("VEVENT"))
                 expect(kpv?.params).to(beNil())
+            }
+        }
+        
+        describe("parse airbnb") {
+            it("should parse an airbnb calendar correctly") {
+                guard
+                    let path = testBumdle().path(forResource: "airbnb", ofType: "ics"),
+                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
+                else {
+                    fail("unable to load resource")
+                    return
+                }
+                
+                let calendar = Parser.parse(ics: ics)
+                expect(calendar).toNot(beNil())
+                expect(calendar?.events.count).to(equal(3))                
             }
         }
     }

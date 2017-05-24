@@ -84,9 +84,11 @@ struct Parser {
                 if newCtx.inEvent {
                     newCtx.inEvent = false;
                     newCtx.events.append(Event(with: newCtx.values))
+                    newCtx.values = [String:String]()
                 }
             default:
-                break
+                guard newCtx.inEvent else { break }
+                newCtx.values[kpv.key] = kpv.value
             }
             
             return newCtx
