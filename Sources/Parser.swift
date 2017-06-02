@@ -8,33 +8,51 @@
 
 import Foundation
 
-struct RegEx {
-    static let fold = "(\r?\n)+[ \t]"
-    static let lineEnding = "\r?\n"
-    static let escComma = "\\,"
-    static let escSemiColon = "\\;"
-    static let escBackslash = "\\\\;"
-    static let escNewline = "\\[nN];"
-}
-
-enum EventValue {
-    case text(String)
-    case date(Date)
-}
 
 struct Context {
     var inCalendar = false
     var inEvent = false
-    var values: [String : String]
+    var values: [String : EventValueType]
     var events: [Event]
     
     init() {
-        values = [String : String]()
+        values = [String : EventValueType]()
         events = [Event]()
     }
 }
 
+struct ParsedLine {
+    let key: String
+    let params: [String:String]?
+    let value: String
+}
+
 struct Parser {
+    struct RegEx {
+        static let fold = "(\r?\n)+[ \t]"
+        static let lineEnding = "\r?\n"
+        static let escComma = "\\,"
+        static let escSemiColon = "\\;"
+        static let escBackslash = "\\\\"
+        static let escNewline = "\\\\[nN]"
+    }
+    
+    struct Keys {
+        static let begin = "BEGIN"
+        static let end = "END"
+    }
+    
+    static let DateKeys = ["DTSTART", "DTEND", "DTSTAMP"]
+    static let dateTimeFormatter = { () -> DateFormatter in
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd'T'HHmmssZ"
+        return formatter
+    }()
+
+    struct VTypes {
+        static let calendar = "VCALENDAR"
+        static let event = "VEVENT"
+    }
     
     static func lines(ics: String) -> [String] {
         let newLine: Character = "\n"
@@ -51,7 +69,42 @@ struct Parser {
             .replace(regex: RegEx.escBackslash, with: "\\")
     }
     
-    static func keyParamsAndValue(from line: String) -> (key: String, params: [String]?, value: String)? {
+    static func dateString(from date: String, params: [String:String]?) -> String {
+        if let params = params,
+            params["VALUE"] == "DATE" {
+            return date + "T120000Z"
+        }
+        
+        if date.characters.last != "Z" {
+            return date + "Z"
+        }
+        
+        return date
+    }
+    
+    static func parse(date: String, params: [String:String]?) -> Date? {
+        return dateTimeFormatter.date(from: dateString(from: date, params: params))
+    }
+    
+    static func parse(params: [String]?) -> [String:String]? {
+        guard let params = params else {
+            return Optional.none
+        }
+        
+        return params.reduce([String:String]()) {
+            resultIn, param in
+            var result = resultIn
+            let split = param.characters.split(separator: "=", maxSplits: 1)
+            
+            if let paramKey = split.first,
+                let paramVal = split.last {
+                result[String(paramKey)] = String(paramVal)
+            }
+            return result
+        }
+    }
+    
+    static func parse(line: String) -> ParsedLine? {
         let valueSplit = line.characters.split(separator: ":", maxSplits: 1)
         guard valueSplit.count == 2,
             let vsFirst = valueSplit.first,
@@ -66,32 +119,40 @@ struct Parser {
         let params = paramsSplit.count > 1 ? paramsSplit.suffix(from: 1).map(String.init) : nil
         let key = String(psFirst)
         
-        return (key, params, value)
+        return ParsedLine(key: key, params: parse(params: params), value: value)
     }
     
     static func parse(ics: String) -> Calendar? {
         let parsedCtx = lines(ics: ics).reduce(Context()) {
-            ctx, line in
-            guard let kpv = keyParamsAndValue(from: line) else { return ctx }
+            ctxIn, line in
+            guard let parsedLine = parse(line: line) else { return ctxIn }
             
-            var newCtx = ctx;
+            var ctx = ctxIn;
             
-            switch kpv.key {
-            case "BEGIN":
-                newCtx.inCalendar = newCtx.inCalendar || kpv.value == "VCALENDAR"
-                newCtx.inEvent = newCtx.inEvent || kpv.value == "VEVENT"
-            case "END":
-                if newCtx.inEvent {
-                    newCtx.inEvent = false;
-                    newCtx.events.append(Event(with: newCtx.values))
-                    newCtx.values = [String:String]()
+            switch parsedLine.key {
+            case Keys.begin:
+                ctx.inCalendar = ctx.inCalendar || parsedLine.value == VTypes.calendar
+                ctx.inEvent = ctx.inEvent || parsedLine.value == VTypes.event
+            case Keys.end:
+                if ctx.inEvent {
+                    ctx.inEvent = false;
+                    ctx.events.append(Event(with: ctx.values))
+                    ctx.values = [String:EventValueType]()
                 }
-            default:
-                guard newCtx.inEvent else { break }
-                newCtx.values[kpv.key] = kpv.value
+            case let key where DateKeys.contains(key):
+                guard ctx.inEvent else { break }
+                if let date = parse(date: parsedLine.value, params: parsedLine.params) {
+                    ctx.values[key] = EventValue(value: date)
+                }
+                else {
+                    ctx.values[key] = EventValue(value: parsedLine.value)
+                }
+            case let key:
+                guard ctx.inEvent else { break }
+                ctx.values[key] = EventValue(value: unescape(text: parsedLine.value))
             }
             
-            return newCtx
+            return ctx
         }
         
         return Calendar(events: parsedCtx.events)

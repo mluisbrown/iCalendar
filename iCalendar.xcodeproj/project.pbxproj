@@ -33,6 +33,10 @@
 		4C338C501ED630C9005ACA65 /* airbnb.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C338C4F1ED630C9005ACA65 /* airbnb.ics */; };
 		4C338C511ED630C9005ACA65 /* airbnb.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C338C4F1ED630C9005ACA65 /* airbnb.ics */; };
 		4C338C521ED630C9005ACA65 /* airbnb.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C338C4F1ED630C9005ACA65 /* airbnb.ics */; };
+		4C338C541ED8BA2A005ACA65 /* EventValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C531ED8BA2A005ACA65 /* EventValue.swift */; };
+		4C338C551ED8BA2A005ACA65 /* EventValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C531ED8BA2A005ACA65 /* EventValue.swift */; };
+		4C338C561ED8BA2A005ACA65 /* EventValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C531ED8BA2A005ACA65 /* EventValue.swift */; };
+		4C338C571ED8BA2A005ACA65 /* EventValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C531ED8BA2A005ACA65 /* EventValue.swift */; };
 		52D6D9871BEFF229002C0205 /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* iCalendar.framework */; };
 		DD7502881C68FEDE006590AF /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* iCalendar.framework */; };
 		DD7502921C690C7A006590AF /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* iCalendar.framework */; };
@@ -85,6 +89,7 @@
 		4C338C401ED0FC26005ACA65 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		4C338C451ED0FC48005ACA65 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		4C338C4F1ED630C9005ACA65 /* airbnb.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = airbnb.ics; path = Fixtures/airbnb.ics; sourceTree = "<group>"; };
+		4C338C531ED8BA2A005ACA65 /* EventValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventValue.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* iCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* iCalendar-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iCalendar-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* iCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +217,7 @@
 				4C338C401ED0FC26005ACA65 /* Calendar.swift */,
 				4C338C451ED0FC48005ACA65 /* Event.swift */,
 				4C338C3B1ED0FBF9005ACA65 /* Extensions.swift */,
+				4C338C531ED8BA2A005ACA65 /* EventValue.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 			files = (
 				4C338C461ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2B1ED0C77C005ACA65 /* Parser.swift in Sources */,
+				4C338C541ED8BA2A005ACA65 /* EventValue.swift in Sources */,
 				4C338C411ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3C1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -547,6 +554,7 @@
 			files = (
 				4C338C481ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2D1ED0C77C005ACA65 /* Parser.swift in Sources */,
+				4C338C561ED8BA2A005ACA65 /* EventValue.swift in Sources */,
 				4C338C431ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3E1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -558,6 +566,7 @@
 			files = (
 				4C338C491ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2E1ED0C77C005ACA65 /* Parser.swift in Sources */,
+				4C338C571ED8BA2A005ACA65 /* EventValue.swift in Sources */,
 				4C338C441ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3F1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -569,6 +578,7 @@
 			files = (
 				4C338C471ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2C1ED0C77C005ACA65 /* Parser.swift in Sources */,
+				4C338C551ED8BA2A005ACA65 /* EventValue.swift in Sources */,
 				4C338C421ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3D1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);

@@ -50,25 +50,25 @@ class ParserSpec: QuickSpec {
             }
         }
         
-        describe("keyParamsAndValueFromLine") {
+        describe("parseLineFromLine") {
             it("should split a line into key, params and a value") {
-                let kpv = Parser.keyParamsAndValue(from: "DTEND;VALUE=DATE:20160614")
+                let kpv = Parser.parse(line: "DTEND;VALUE=DATE:20160614")
                 expect(kpv).toNot(beNil())
                 expect(kpv?.key).to(equal("DTEND"))
-                expect(kpv?.params?[0]).to(equal("VALUE=DATE"))
+                expect(kpv?.params?["VALUE"]).to(equal("DATE"))
                 expect(kpv?.value).to(equal("20160614"))
             }
             
             it("should parse multiple params") {
-                let kpv = Parser.keyParamsAndValue(from: "DTEND;VALUE=DATE;FOO=BAR:20160614")
-                expect(kpv?.params?[0]).to(equal("VALUE=DATE"))
-                expect(kpv?.params?[1]).to(equal("FOO=BAR"))
+                let kpv = Parser.parse(line: "DTEND;VALUE=DATE;FOO=BAR:20160614")
+                expect(kpv?.params?["VALUE"]).to(equal("DATE"))
+                expect(kpv?.params?["FOO"]).to(equal("BAR"))
                 expect(kpv?.key).to(equal("DTEND"))
                 expect(kpv?.value).to(equal("20160614"))
             }
 
             it("should handle no params") {
-                let kpv = Parser.keyParamsAndValue(from: "BEGIN:VEVENT")
+                let kpv = Parser.parse(line: "BEGIN:VEVENT")
                 expect(kpv?.key).to(equal("BEGIN"))
                 expect(kpv?.value).to(equal("VEVENT"))
                 expect(kpv?.params).to(beNil())
