@@ -12,17 +12,22 @@ struct Event {
     let uid: String
     let startDate: Date
     let endDate: Date
-    let description: String
-    let summary: String
-    let location: String
+    let description: String?
+    let summary: String?
+    let location: String?
 
-    init(with dict: [String:EventValueType]) {
+    init?(with dict: [String:EventValueType]) {
+        guard let uid = dict["UID"]?.textValue,
+            let startDate = dict["DTSTART"]?.dateValue,
+            let endDate = dict["DTEND"]?.dateValue else {
+                return nil
+        }
         
-        uid = dict["UID"]?.textValue ?? ""
-        startDate = dict["DTSTART"]?.dateValue ?? Date()
-        endDate = dict["DTEND"]?.dateValue ?? Date()
-        description = dict["DESCRIPTION"]?.textValue ?? ""
-        summary = dict["SUMMARY"]?.textValue ?? ""
-        location = dict["LOCATION"]?.textValue ?? ""
+        self.uid = uid
+        self.startDate = startDate
+        self.endDate = endDate
+        description = dict["DESCRIPTION"]?.textValue
+        summary = dict["SUMMARY"]?.textValue
+        location = dict["LOCATION"]?.textValue
     }
 }

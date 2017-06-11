@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0EBD781EED9016009A9A12 /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EBD771EED9016009A9A12 /* Pipe.swift */; };
+		4C0EBD791EED9016009A9A12 /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EBD771EED9016009A9A12 /* Pipe.swift */; };
+		4C0EBD7A1EED9016009A9A12 /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EBD771EED9016009A9A12 /* Pipe.swift */; };
+		4C0EBD7B1EED9016009A9A12 /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EBD771EED9016009A9A12 /* Pipe.swift */; };
+		4C0EBD7D1EED97D0009A9A12 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD7C1EED97D0009A9A12 /* Result.framework */; };
+		4C0EBD7F1EED97EA009A9A12 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD7E1EED97EA009A9A12 /* Result.framework */; };
+		4C0EBD811EED9806009A9A12 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD801EED9806009A9A12 /* Result.framework */; };
+		4C0EBD831EED981B009A9A12 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD821EED981B009A9A12 /* Result.framework */; };
+		4C0EBD841EEDBD49009A9A12 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD7C1EED97D0009A9A12 /* Result.framework */; };
+		4C0EBD851EEDBD92009A9A12 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C0EBD7E1EED97EA009A9A12 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C338C2B1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
 		4C338C2C1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
 		4C338C2D1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
@@ -75,12 +85,18 @@
 			files = (
 				4C338C351ED0E057005ACA65 /* Nimble.framework in CopyFiles */,
 				4C338C361ED0E057005ACA65 /* Quick.framework in CopyFiles */,
+				4C0EBD851EEDBD92009A9A12 /* Result.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C0EBD771EED9016009A9A12 /* Pipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipe.swift; sourceTree = "<group>"; };
+		4C0EBD7C1EED97D0009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		4C0EBD7E1EED97EA009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		4C0EBD801EED9806009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
+		4C0EBD821EED981B009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		4C338C2A1ED0C77C005ACA65 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		4C338C301ED0E024005ACA65 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		4C338C311ED0E024005ACA65 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
@@ -106,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0EBD7D1EED97D0009A9A12 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0EBD811EED9806009A9A12 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0EBD831EED981B009A9A12 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0EBD7F1EED97EA009A9A12 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +164,7 @@
 			files = (
 				4C338C321ED0E024005ACA65 /* Nimble.framework in Frameworks */,
 				4C338C331ED0E024005ACA65 /* Quick.framework in Frameworks */,
+				4C0EBD841EEDBD49009A9A12 /* Result.framework in Frameworks */,
 				DD7502881C68FEDE006590AF /* iCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +183,10 @@
 		4C338C2F1ED0E024005ACA65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C0EBD821EED981B009A9A12 /* Result.framework */,
+				4C0EBD801EED9806009A9A12 /* Result.framework */,
+				4C0EBD7E1EED97EA009A9A12 /* Result.framework */,
+				4C0EBD7C1EED97D0009A9A12 /* Result.framework */,
 				4C338C301ED0E024005ACA65 /* Nimble.framework */,
 				4C338C311ED0E024005ACA65 /* Quick.framework */,
 			);
@@ -218,6 +243,7 @@
 				4C338C451ED0FC48005ACA65 /* Event.swift */,
 				4C338C3B1ED0FBF9005ACA65 /* Extensions.swift */,
 				4C338C531ED8BA2A005ACA65 /* EventValue.swift */,
+				4C0EBD771EED9016009A9A12 /* Pipe.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -535,6 +561,7 @@
 				4C338C461ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2B1ED0C77C005ACA65 /* Parser.swift in Sources */,
 				4C338C541ED8BA2A005ACA65 /* EventValue.swift in Sources */,
+				4C0EBD781EED9016009A9A12 /* Pipe.swift in Sources */,
 				4C338C411ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3C1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -555,6 +582,7 @@
 				4C338C481ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2D1ED0C77C005ACA65 /* Parser.swift in Sources */,
 				4C338C561ED8BA2A005ACA65 /* EventValue.swift in Sources */,
+				4C0EBD7A1EED9016009A9A12 /* Pipe.swift in Sources */,
 				4C338C431ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3E1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -567,6 +595,7 @@
 				4C338C491ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2E1ED0C77C005ACA65 /* Parser.swift in Sources */,
 				4C338C571ED8BA2A005ACA65 /* EventValue.swift in Sources */,
+				4C0EBD7B1EED9016009A9A12 /* Pipe.swift in Sources */,
 				4C338C441ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3F1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -579,6 +608,7 @@
 				4C338C471ED0FC48005ACA65 /* Event.swift in Sources */,
 				4C338C2C1ED0C77C005ACA65 /* Parser.swift in Sources */,
 				4C338C551ED8BA2A005ACA65 /* EventValue.swift in Sources */,
+				4C0EBD791EED9016009A9A12 /* Pipe.swift in Sources */,
 				4C338C421ED0FC26005ACA65 /* Calendar.swift in Sources */,
 				4C338C3D1ED0FBF9005ACA65 /* Extensions.swift in Sources */,
 			);
@@ -728,6 +758,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -751,6 +785,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -798,6 +836,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -820,6 +862,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -843,6 +889,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -865,6 +915,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -889,6 +943,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -912,6 +970,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Configs/iCalendar.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -934,6 +996,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -953,6 +1016,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

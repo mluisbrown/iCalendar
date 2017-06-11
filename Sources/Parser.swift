@@ -7,24 +7,32 @@
 //
 
 import Foundation
+import Result
 
+typealias EventDictionary = [String:EventValueType]
 
 struct Context {
-    var inCalendar = false
-    var inEvent = false
-    var values: [String : EventValueType]
-    var events: [Event]
-    
-    init() {
-        values = [String : EventValueType]()
-        events = [Event]()
-    }
+    var inCalendar = 0
+    var inEvent = 0
+    var values = EventDictionary()
+    var events = [Event]()
 }
 
 struct ParsedLine {
     let key: String
     let params: [String:String]?
     let value: String
+}
+
+enum ParserError: Error {
+    case invalidObjectType
+    case nestedCalendar
+    case nestedEvent
+    case endBeforeBegin
+    case noColon(String)
+    case noKey(String)
+    case requiredEventFieldsMissing(EventDictionary)
+    case dateKeyOutsideOfEvent(String)
 }
 
 struct Parser {
@@ -49,9 +57,9 @@ struct Parser {
         return formatter
     }()
 
-    struct VTypes {
-        static let calendar = "VCALENDAR"
-        static let event = "VEVENT"
+    enum VType: String {
+        case calendar = "VCALENDAR"
+        case event = "VEVENT"
     }
     
     static func lines(ics: String) -> [String] {
@@ -104,57 +112,85 @@ struct Parser {
         }
     }
     
-    static func parse(line: String) -> ParsedLine? {
+    static func parse(line: String) -> Result<ParsedLine, ParserError> {
         let valueSplit = line.characters.split(separator: ":", maxSplits: 1)
         guard valueSplit.count == 2,
             let vsFirst = valueSplit.first,
-            let vsLast = valueSplit.last else { return nil }
+            let vsLast = valueSplit.last else { return .failure(ParserError.noColon(line)) }
         
         let value = String(vsLast)
         let paramsSplit = vsFirst.split(separator: ";")
 
         guard paramsSplit.count > 0,
-            let psFirst = paramsSplit.first else { return nil }
+            let psFirst = paramsSplit.first else { return .failure(ParserError.noKey(line)) }
         
         let params = paramsSplit.count > 1 ? paramsSplit.suffix(from: 1).map(String.init) : nil
         let key = String(psFirst)
         
-        return ParsedLine(key: key, params: parse(params: params), value: value)
+        return .success(ParsedLine(key: key, params: parse(params: params), value: value))
     }
     
-    static func parse(ics: String) -> Calendar? {
-        let parsedCtx = lines(ics: ics).reduce(Context()) {
-            ctxIn, line in
-            guard let parsedLine = parse(line: line) else { return ctxIn }
-            
-            var ctx = ctxIn;
-            
-            switch parsedLine.key {
-            case Keys.begin:
-                ctx.inCalendar = ctx.inCalendar || parsedLine.value == VTypes.calendar
-                ctx.inEvent = ctx.inEvent || parsedLine.value == VTypes.event
-            case Keys.end:
-                if ctx.inEvent {
-                    ctx.inEvent = false;
-                    ctx.events.append(Event(with: ctx.values))
-                    ctx.values = [String:EventValueType]()
+    static func parse(lines: [String]) -> Result<Calendar, ParserError> {
+        do {
+            let parsedCtx = try lines.reduce(Context()) {
+                ctxIn, line in
+                
+                let parsedLine = try parse(line: line).dematerialize()
+                var ctx = ctxIn;
+                
+                switch parsedLine.key {
+                case Keys.begin:
+                    guard let vtype = VType(rawValue: parsedLine.value) else { throw ParserError.invalidObjectType }
+                    switch vtype {
+                    case .calendar:
+                        ctx.inCalendar += 1
+                        if ctx.inCalendar > 1  { throw ParserError.nestedCalendar }
+                    case .event:
+                        ctx.inEvent += 1
+                        if ctx.inEvent > 1 { throw ParserError.nestedEvent }
+                    }
+                case Keys.end:
+                    guard let vtype = VType(rawValue: parsedLine.value) else { throw ParserError.invalidObjectType }
+                    switch vtype {
+                    case .calendar:
+                        ctx.inCalendar -= 1
+                        if ctx.inCalendar != 0 { throw ParserError.endBeforeBegin }
+                    case .event:
+                        ctx.inEvent -= 1
+                        if ctx.inEvent != 0 { throw ParserError.endBeforeBegin }
+                        
+                        guard let event = Event(with: ctx.values) else {
+                            throw ParserError.requiredEventFieldsMissing(ctx.values)
+                        }
+                        
+                        ctx.events.append(event)
+                        ctx.values.removeAll(keepingCapacity: true)
+                    }
+                case let key where DateKeys.contains(key):
+                    guard ctx.inEvent > 0 else { throw ParserError.dateKeyOutsideOfEvent(line) }
+                    if let date = parse(date: parsedLine.value, params: parsedLine.params) {
+                        ctx.values[key] = EventValue(value: date)
+                    }
+                    else {
+                        ctx.values[key] = EventValue(value: parsedLine.value)
+                    }
+                case let key:
+                    guard ctx.inEvent > 0 else { break }
+                    ctx.values[key] = EventValue(value: unescape(text: parsedLine.value))
                 }
-            case let key where DateKeys.contains(key):
-                guard ctx.inEvent else { break }
-                if let date = parse(date: parsedLine.value, params: parsedLine.params) {
-                    ctx.values[key] = EventValue(value: date)
-                }
-                else {
-                    ctx.values[key] = EventValue(value: parsedLine.value)
-                }
-            case let key:
-                guard ctx.inEvent else { break }
-                ctx.values[key] = EventValue(value: unescape(text: parsedLine.value))
+                
+                return ctx
             }
             
-            return ctx
+            return .success(Calendar(events: parsedCtx.events))
+        } catch let error as ParserError  {
+            return .failure(error)
+        } catch let error {
+            fatalError("Unexpected Error during parsing: \(error)")
         }
-        
-        return Calendar(events: parsedCtx.events)
+    }
+    
+    static func parse(ics: String) -> Result<Calendar, ParserError> {
+        return ics |> lines |> parse
     }
 }

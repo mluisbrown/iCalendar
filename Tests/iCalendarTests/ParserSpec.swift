@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 import Nimble
 import Quick
 
@@ -52,26 +53,34 @@ class ParserSpec: QuickSpec {
         
         describe("parseLineFromLine") {
             it("should split a line into key, params and a value") {
-                let kpv = Parser.parse(line: "DTEND;VALUE=DATE:20160614")
-                expect(kpv).toNot(beNil())
-                expect(kpv?.key).to(equal("DTEND"))
-                expect(kpv?.params?["VALUE"]).to(equal("DATE"))
-                expect(kpv?.value).to(equal("20160614"))
+                let result = Parser.parse(line: "DTEND;VALUE=DATE:20160614")
+                expect(result.value).toNot(beNil())
+                
+                let kpv = result.value!
+                expect(kpv.key).to(equal("DTEND"))
+                expect(kpv.params?["VALUE"]).to(equal("DATE"))
+                expect(kpv.value).to(equal("20160614"))
             }
             
             it("should parse multiple params") {
-                let kpv = Parser.parse(line: "DTEND;VALUE=DATE;FOO=BAR:20160614")
-                expect(kpv?.params?["VALUE"]).to(equal("DATE"))
-                expect(kpv?.params?["FOO"]).to(equal("BAR"))
-                expect(kpv?.key).to(equal("DTEND"))
-                expect(kpv?.value).to(equal("20160614"))
+                let result = Parser.parse(line: "DTEND;VALUE=DATE;FOO=BAR:20160614")
+                expect(result.value).toNot(beNil())
+
+                let kpv = result.value!
+                expect(kpv.params?["VALUE"]).to(equal("DATE"))
+                expect(kpv.params?["FOO"]).to(equal("BAR"))
+                expect(kpv.key).to(equal("DTEND"))
+                expect(kpv.value).to(equal("20160614"))
             }
 
             it("should handle no params") {
-                let kpv = Parser.parse(line: "BEGIN:VEVENT")
-                expect(kpv?.key).to(equal("BEGIN"))
-                expect(kpv?.value).to(equal("VEVENT"))
-                expect(kpv?.params).to(beNil())
+                let result = Parser.parse(line: "BEGIN:VEVENT")
+                expect(result.value).toNot(beNil())
+
+                let kpv = result.value!
+                expect(kpv.key).to(equal("BEGIN"))
+                expect(kpv.value).to(equal("VEVENT"))
+                expect(kpv.params).to(beNil())
             }
         }
         
@@ -85,9 +94,11 @@ class ParserSpec: QuickSpec {
                     return
                 }
                 
-                let calendar = Parser.parse(ics: ics)
-                expect(calendar).toNot(beNil())
-                expect(calendar?.events.count).to(equal(3))                
+                let result = Parser.parse(ics: ics)
+                expect(result.value).toNot(beNil())
+                
+                let calendar = result.value!
+                expect(calendar.events.count).to(equal(3))
             }
         }
     }
