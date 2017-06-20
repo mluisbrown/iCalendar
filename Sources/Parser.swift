@@ -35,17 +35,17 @@ enum ParserError: Error {
     case dateKeyOutsideOfEvent(String)
 }
 
+enum RegEx: String {
+    case fold = "(\r?\n)+[ \t]"
+    case lineEnding = "\r?\n"
+    case escComma = "\\\\,"
+    case escSemiColon = "\\\\;"
+    case escBackslash = "\\\\{2}"
+    case escNewline = "\\\\[nN]"
+}
+
 struct Parser {
-    struct RegEx {
-        static let fold = "(\r?\n)+[ \t]"
-        static let lineEnding = "\r?\n"
-        static let escComma = "\\,"
-        static let escSemiColon = "\\;"
-        static let escBackslash = "\\\\"
-        static let escNewline = "\\\\[nN]"
-    }
-    
-    struct Keys {
+    struct Key {
         static let begin = "BEGIN"
         static let end = "END"
     }
@@ -64,17 +64,17 @@ struct Parser {
     
     static func lines(ics: String) -> [String] {
         let newLine: Character = "\n"
-        let normalized = ics.replace(regex: RegEx.fold, with: "")
-            .replace(regex: RegEx.lineEnding, with: String(newLine))
+        let normalized = ics.replace(regex: .fold, with: "")
+            .replace(regex: .lineEnding, with: String(newLine))
         
         return normalized.characters.split(separator: newLine).map(String.init)
     }
     
     static func unescape(text: String) -> String {
-        return text.replace(regex: RegEx.escComma, with: "'")
-            .replace(regex: RegEx.escSemiColon, with: ";")
-            .replace(regex: RegEx.escNewline, with: "\n")
-            .replace(regex: RegEx.escBackslash, with: "\\")
+        return text.replace(regex: .escComma, with: ",")
+            .replace(regex: .escSemiColon, with: ";")
+            .replace(regex: .escNewline, with: "\n")
+            .replace(regex: .escBackslash, with: "\\\\")
     }
     
     static func dateString(from date: String, params: [String:String]?) -> String {
@@ -139,7 +139,7 @@ struct Parser {
                 var ctx = ctxIn;
                 
                 switch parsedLine.key {
-                case Keys.begin:
+                case Key.begin:
                     guard let vtype = VType(rawValue: parsedLine.value) else { throw ParserError.invalidObjectType }
                     switch vtype {
                     case .calendar:
@@ -149,7 +149,7 @@ struct Parser {
                         ctx.inEvent += 1
                         if ctx.inEvent > 1 { throw ParserError.nestedEvent }
                     }
-                case Keys.end:
+                case Key.end:
                     guard let vtype = VType(rawValue: parsedLine.value) else { throw ParserError.invalidObjectType }
                     switch vtype {
                     case .calendar:

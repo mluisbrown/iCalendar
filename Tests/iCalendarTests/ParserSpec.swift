@@ -51,6 +51,13 @@ class ParserSpec: QuickSpec {
             }
         }
         
+        describe("unescape") {
+            it("should unescape escaped characters") {
+                let unescaped = Parser.unescape(text: "Newline: \\n Comma: \\, Semicolon: \\; Backslash \\\\")
+                expect(unescaped).to(equal("Newline: \n Comma: , Semicolon: ; Backslash \\"))
+            }
+        }
+        
         describe("parseLineFromLine") {
             it("should split a line into key, params and a value") {
                 let result = Parser.parse(line: "DTEND;VALUE=DATE:20160614")

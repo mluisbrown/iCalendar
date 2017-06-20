@@ -13,9 +13,9 @@ extension String {
         return NSMakeRange(0, self.characters.count)
     }
         
-    func replace(regex: String, with: String) -> String {
+    func replace(regex: RegEx, with: String) -> String {
         do {
-            let nsregex = try NSRegularExpression(pattern: regex, options: .caseInsensitive)
+            let nsregex = try NSRegularExpression(pattern: regex.rawValue, options: .caseInsensitive)
             return nsregex.stringByReplacingMatches(in: self, options: [], range: self.NSRange(), withTemplate: with)
         } catch {
             return self
