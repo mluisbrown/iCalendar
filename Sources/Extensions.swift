@@ -9,16 +9,31 @@
 import Foundation
 
 extension String {
-    func NSRange() -> NSRange {
+    var nsRange: NSRange {
         return NSMakeRange(0, self.characters.count)
     }
-        
+    
     func replace(regex: RegEx, with: String) -> String {
         do {
             let nsregex = try NSRegularExpression(pattern: regex.rawValue, options: .caseInsensitive)
-            return nsregex.stringByReplacingMatches(in: self, options: [], range: self.NSRange(), withTemplate: with)
+            return nsregex.stringByReplacingMatches(in: self, options: [], range: self.nsRange, withTemplate: with)
         } catch {
             return self
         }
     }
 }
+
+extension Dictionary where Key: ExpressibleByStringLiteral {
+    subscript<Index: RawRepresentable>(index: Index) -> Value? where Index.RawValue == String {
+        get {
+            return self[index.rawValue as! Key]
+        }
+        
+        set {
+            self[index.rawValue as! Key] = newValue
+        }
+    }
+}
+
+
+

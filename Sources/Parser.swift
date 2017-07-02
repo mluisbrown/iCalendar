@@ -190,7 +190,7 @@ struct Parser {
         }
     }
     
-    static func parse(ics: String) -> Result<Calendar, ParserError> {
+    public static func parse(ics: String) -> Result<Calendar, ParserError> {
         return ics |> lines |> parse
     }
 }
