@@ -106,6 +106,8 @@ class ParserSpec: QuickSpec {
                 
                 let calendar = result.value!
                 expect(calendar.events.count).to(equal(3))
+                
+//                print(Writer.write(calendar: calendar))
             }
         }
     }

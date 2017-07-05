@@ -16,24 +16,24 @@ struct Event {
     let summary: String?
     let location: String?
 
-    init?(with dict: [String:EventValueType]) {
-        guard let uid = dict[Keys.uid]?.textValue,
-            let startDate = dict[Keys.startDate]?.dateValue,
-            let endDate = dict[Keys.endDate]?.dateValue else {
+    init?(with encoded: [String:EventValueRepresentable]) {
+        guard let uid = encoded[Keys.uid]?.textValue,
+            let startDate = encoded[Keys.startDate]?.dateValue,
+            let endDate = encoded[Keys.endDate]?.dateValue else {
                 return nil
         }
         
         self.uid = uid
         self.startDate = startDate
         self.endDate = endDate
-        description = dict[Keys.description]?.textValue
-        summary = dict[Keys.summary]?.textValue
-        location = dict[Keys.location]?.textValue
+        description = encoded[Keys.description]?.textValue
+        summary = encoded[Keys.summary]?.textValue
+        location = encoded[Keys.location]?.textValue
         
     }
     
-    func asDictionary() -> [String:EventValueType] {
-        var dict: [String: EventValueType] = [:]
+    var encoded: [String:EventValueRepresentable] {
+        var dict: [String: EventValueRepresentable] = [:]
         dict[Keys.uid] = EventValue(value: uid)
         dict[Keys.startDate] = EventValue(value: startDate)
         dict[Keys.endDate] = EventValue(value: endDate)

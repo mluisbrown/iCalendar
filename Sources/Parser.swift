@@ -9,7 +9,7 @@
 import Foundation
 import Result
 
-typealias EventDictionary = [String:EventValueType]
+typealias EventDictionary = [String:EventValueRepresentable]
 
 struct Context {
     var inCalendar = 0

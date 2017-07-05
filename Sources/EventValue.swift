@@ -13,12 +13,12 @@ protocol DateOrString {}
 extension String: DateOrString {}
 extension Date: DateOrString {}
 
-protocol EventValueType {
+protocol EventValueRepresentable {
     var textValue: String? { get }
     var dateValue: Date? { get }
 }
 
-struct EventValue<T>: EventValueType where T: DateOrString {
+struct EventValue<T>: EventValueRepresentable where T: DateOrString {
     let value: T
     
     var textValue: String? {
@@ -29,3 +29,13 @@ struct EventValue<T>: EventValueType where T: DateOrString {
         return value as? Date
     }
 }
+
+func ==(lhs: EventValueRepresentable, rhs: EventValueRepresentable) -> Bool {
+    return lhs.dateValue == rhs.dateValue ||
+        lhs.textValue == rhs.textValue
+}
+
+func ==(lhs: (String, EventValueRepresentable), rhs: (String, EventValueRepresentable)) -> Bool {
+    return lhs.0 == rhs.0 && lhs.1 == rhs.1
+}
+
