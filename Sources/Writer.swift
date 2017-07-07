@@ -19,21 +19,21 @@ struct Writer {
     public static func write(calendar: Calendar) -> String {
         let header =
         """
-        BEGIN:VCALENDAR
-        PRODID;X-RICAL-TZSOURCE=TZINFO:-//Michael Brown//iCalendar//EN
-        CALSCALE:GREGORIAN
-        VERSION:2.0
+        BEGIN:VCALENDAR\r
+        PRODID;X-RICAL-TZSOURCE=TZINFO:-//Michael Brown//iCalendar//EN\r
+        CALSCALE:GREGORIAN\r
+        VERSION:2.0\r
         """
         
         return calendar.events.reduce(header) {
-            $0.appending(write(event: $1))
-        } + "END:VCALENDAR\n"
+            $0 + write(event: $1)
+        } + "END:VCALENDAR\r\n"
     }
     
     static func write(event: Event) -> String {
-        return event.encoded.reduce("BEGIN:VEVENT\n" ) {
-            $0.appending("\($1.0)\(write(value:$1.1))\n")
-            } + "END:VEVENT\n"
+        return event.encoded.reduce("BEGIN:VEVENT\r\n" ) {
+            $0 + ("\($1.0)\(write(value:$1.1))" |> fold) + "\r\n"
+            } + "END:VEVENT\r\n"
     }
     
     static func write(value: EventValueRepresentable) -> String {
@@ -42,9 +42,24 @@ struct Writer {
         }
         
         if let text = value.textValue {
-            return ":" + text
+            return ":" + escape(text)
         }
         
         return ""
+    }
+    
+    static func fold(line: String) -> String {
+        return line.characters.reduce("") {
+            let result = $0.appending(String($1))
+            let splitCount = result.components(separatedBy: "\r\n ").count - 1
+            return (result.characters.count - splitCount) % 73 == 0 ? result.appending("\r\n ") : result
+        }
+    }
+    
+    static func escape(_ text: String) -> String {
+        return text.replace(regex: .backslash, with: "\\\\\\\\")
+            .replace(regex: .newLine, with: "\\\\n")
+            .replace(regex: .semiColon, with: "\\\\;")
+            .replace(regex: .comma, with: "\\\\,")
     }
 }

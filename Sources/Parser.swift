@@ -35,15 +35,6 @@ enum ParserError: Error {
     case dateKeyOutsideOfEvent(String)
 }
 
-enum RegEx: String {
-    case fold = "(\r?\n)+[ \t]"
-    case lineEnding = "\r?\n"
-    case escComma = "\\\\,"
-    case escSemiColon = "\\\\;"
-    case escBackslash = "\\\\{2}"
-    case escNewline = "\\\\[nN]"
-}
-
 struct Parser {
     struct Key {
         static let begin = "BEGIN"
@@ -70,7 +61,7 @@ struct Parser {
         return normalized.characters.split(separator: newLine).map(String.init)
     }
     
-    static func unescape(text: String) -> String {
+    static func unescape(_ text: String) -> String {
         return text.replace(regex: .escComma, with: ",")
             .replace(regex: .escSemiColon, with: ";")
             .replace(regex: .escNewline, with: "\n")
@@ -176,7 +167,7 @@ struct Parser {
                     }
                 case let key:
                     guard ctx.inEvent > 0 else { break }
-                    ctx.values[key] = EventValue(value: unescape(text: parsedLine.value))
+                    ctx.values[key] = EventValue(value: unescape(parsedLine.value))
                 }
                 
                 return ctx

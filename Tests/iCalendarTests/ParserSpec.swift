@@ -13,11 +13,6 @@ import Quick
 
 @testable import iCalendar
 
-func testBumdle() -> Bundle {
-    let bundleArray = Bundle.allBundles.filter() { $0.bundlePath.hasSuffix(".xctest") }
-    return bundleArray.first!
-}
-
 class ParserSpec: QuickSpec {
     override func spec() {
         describe("lines") {
@@ -53,7 +48,7 @@ class ParserSpec: QuickSpec {
         
         describe("unescape") {
             it("should unescape escaped characters") {
-                let unescaped = Parser.unescape(text: "Newline: \\n Comma: \\, Semicolon: \\; Backslash \\\\")
+                let unescaped = Parser.unescape("Newline: \\n Comma: \\, Semicolon: \\; Backslash \\\\")
                 expect(unescaped).to(equal("Newline: \n Comma: , Semicolon: ; Backslash \\"))
             }
         }
@@ -107,7 +102,7 @@ class ParserSpec: QuickSpec {
                 let calendar = result.value!
                 expect(calendar.events.count).to(equal(3))
                 
-//                print(Writer.write(calendar: calendar))
+                print(Writer.write(calendar: calendar))
             }
         }
     }
