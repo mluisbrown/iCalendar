@@ -14,12 +14,11 @@ extension String {
     }
     
     func replace(regex: RegEx, with: String) -> String {
-        do {
-            let nsregex = try NSRegularExpression(pattern: regex.rawValue, options: .caseInsensitive)
-            return nsregex.stringByReplacingMatches(in: self, options: [], range: self.nsRange, withTemplate: with)
-        } catch {
-            return self
-        }
+        return regex.compiled.stringByReplacingMatches(in: self, options: [], range: self.nsRange, withTemplate: with)
+    }
+    
+    func numberOfMatches(of regex: RegEx) -> Int {
+        return regex.compiled.numberOfMatches(in: self, range: self.nsRange)
     }
 }
 

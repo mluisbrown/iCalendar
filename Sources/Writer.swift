@@ -15,30 +15,34 @@ struct Writer {
         return formatter
     }()
     
-    
-    public static func write(calendar: Calendar) -> String {
-        let header =
+    static let foldLength = 73
+    static let calendarHeader =
         """
         BEGIN:VCALENDAR\r
         PRODID;X-RICAL-TZSOURCE=TZINFO:-//Michael Brown//iCalendar//EN\r
         CALSCALE:GREGORIAN\r
         VERSION:2.0\r
         """
-        
-        return calendar.events.reduce(header) {
+    static let calendarFooter = "END:VCALENDAR\r\n"
+    static let eventHeader = "BEGIN:VEVENT\r\n"
+    static let eventFooter = "END:VEVENT\r\n" 
+    static let dateValueParam = ";VALUE=DATE:"
+    
+    public static func write(calendar: Calendar) -> String {
+        return calendar.events.reduce(calendarHeader) {
             $0 + write(event: $1)
-        } + "END:VCALENDAR\r\n"
+        } + calendarFooter
     }
     
     static func write(event: Event) -> String {
-        return event.encoded.reduce("BEGIN:VEVENT\r\n" ) {
-            $0 + ("\($1.0)\(write(value:$1.1))" |> fold) + "\r\n"
-            } + "END:VEVENT\r\n"
+        return event.encoded.reduce(eventHeader) {
+            $0 + fold($1.0 + write(value: $1.1)) + "\r\n"
+            } + eventFooter
     }
     
     static func write(value: EventValueRepresentable) -> String {
         if let date = value.dateValue {
-            return ";VALUE=DATE:" + dateFormatter.string(from: date)
+            return dateValueParam + dateFormatter.string(from: date)
         }
         
         if let text = value.textValue {
@@ -48,11 +52,11 @@ struct Writer {
         return ""
     }
     
-    static func fold(line: String) -> String {
+    static func fold(_ line: String) -> String {
         return line.characters.reduce("") {
-            let result = $0.appending(String($1))
-            let splitCount = result.components(separatedBy: "\r\n ").count - 1
-            return (result.characters.count - splitCount) % 73 == 0 ? result.appending("\r\n ") : result
+            let result = $0 + String($1)
+            let splitCount = result.numberOfMatches(of: .fold)
+            return (result.characters.count - splitCount) % foldLength == 0 ? result + "\r\n " : result
         }
     }
     
