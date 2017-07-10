@@ -26,14 +26,14 @@ enum RegEx: String {
     var compiled: NSRegularExpression {
         let nsregex: NSRegularExpression
         
-        if case .none = RegEx.cache[self] {
+        if let nsr = RegEx.cache[self] {
+            nsregex = nsr
+        }
+        else {
             nsregex = try! NSRegularExpression(pattern: self.rawValue, options: .caseInsensitive)
             RegEx.cache[self] = nsregex            
         }
-        else {
-            nsregex = RegEx.cache[self]!
-        }
-        
+                
         return nsregex 
     }
 }
