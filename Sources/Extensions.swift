@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     var nsRange: NSRange {
-        return NSMakeRange(0, self.characters.count)
+        return NSMakeRange(0, self.utf16.count)
     }
     
     func replace(regex: RegEx, with: String) -> String {

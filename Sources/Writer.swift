@@ -15,7 +15,7 @@ struct Writer {
         return formatter
     }()
     
-    static let foldLength = 73
+    static let iCalFoldLength = 73
     static let calendarHeader =
         """
         BEGIN:VCALENDAR\r
@@ -52,7 +52,7 @@ struct Writer {
         return ""
     }
     
-    static func fold(_ line: String) -> String {
+    static func fold(_ line: String, at foldLength: Int = iCalFoldLength) -> String {
         return line.characters.reduce("") {
             let result = $0 + String($1)
             let splitCount = result.numberOfMatches(of: .fold)
