@@ -28,26 +28,23 @@ class WriterSpec: QuickSpec {
             }
         }
         
-//        describe("write airbnb") {
-//            it("write out a parsed airbnb calendar correctly") {
-//                guard
-//                    let path = testBumdle().path(forResource: "airbnb", ofType: "ics"),
-//                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
-//                    else {
-//                        fail("unable to load resource")
-//                        return
-//                }
-//                
-//                let result = Parser.parse(ics: ics)
-//                expect(result.value).toNot(beNil())
-//                
-//                let calendar = result.value!
-//                expect(calendar.events.count).to(equal(3))
-//
-//                let output = Writer.write(calendar: calendar)
-//                expect(output).to(equal(ics))
-//            }
-//        }
-        
+        describe("write event") {
+            it("write out a parsed airbnb event correctly") {
+                guard
+                    let path = testBumdle().path(forResource: "airbnb", ofType: "ics"),
+                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
+                    else {
+                        fail("unable to load resource")
+                        return
+                }
+                
+                let result = Parser.parse(ics: ics)
+                let calendar = result.value!
+
+                let output = Writer.write(event: calendar.events.first!)
+                let expected = "BEGIN:VEVENT\r\nDESCRIPTION:CHECKIN: 19-05-2016\\nCHECKOUT: 21-05-2016\\nNIGHTS: 2\\nPHONE: \r\n +1 (514) 317-0903\\nEMAIL: (no email alias available)\\nPROPERTY: Charming\r\n Apartment in Mouraria\\n\r\nDTEND;VALUE=DATE:20160521\r\nDTSTART;VALUE=DATE:20160519\r\nLOCATION:Charming Apartment in Mouraria\r\nSUMMARY:Mélanie Dumont (PMQ2KJ)\r\nUID:-c05ic0ieu033--p878ee9uueyx@airbnb.com\r\nEND:VEVENT\r\n"
+                expect(output).to(equal(expected))
+            }
+        }        
     }
 }

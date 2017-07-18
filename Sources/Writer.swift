@@ -35,9 +35,11 @@ struct Writer {
     }
     
     static func write(event: Event) -> String {
-        return event.encoded.reduce(eventHeader) {
+        return event.encoded.sorted() {
+            $0.0 < $1.0
+        }.reduce(eventHeader) {
             $0 + fold($1.0 + write(value: $1.1)) + "\r\n"
-            } + eventFooter
+        } + eventFooter
     }
     
     static func write(value: EventValueRepresentable) -> String {
