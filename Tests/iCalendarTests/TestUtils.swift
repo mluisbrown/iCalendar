@@ -8,16 +8,16 @@
 
 import Foundation
 
-func testBumdle() -> Bundle {
+func testBundle() -> Bundle {
     let bundleArray = Bundle.allBundles.filter() { $0.bundlePath.hasSuffix(".xctest") }
     return bundleArray.first!
 }
 
 func testResource(from filename: String) -> String? {
-    let bundlePath = testBumdle().path(forResource: filename, ofType: "")
+    let bundlePath = testBundle().path(forResource: filename, ofType: "")
     // hack to get around bundle resources not existing when running in Swift Package Manager (swift test)
     // see: https://bugs.swift.org/browse/SR-4725
-    let spmPath = NSString.path(withComponents: [Bundle(for: CalendarSpec.self).bundlePath, "..", "..", "..", "Tests/iCalendarTests/Fixtures/", filename])
+    let spmPath = NSString.path(withComponents: [testBundle().bundlePath, "..", "..", "..", "Tests/iCalendarTests/Fixtures/", filename])
     
     if let bundlePath = bundlePath, let resource = try? String(contentsOf: URL(fileURLWithPath: bundlePath)) {
         return resource
