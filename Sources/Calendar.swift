@@ -11,3 +11,11 @@ import Foundation
 struct Calendar {
     let events: [Event]
 }
+
+func +(lhs: Calendar, rhs: Calendar) -> Calendar {
+    return Calendar(events: (lhs.events + rhs.events).sorted() {
+        return $0.startDate > $1.startDate
+    })
+}
+    
+

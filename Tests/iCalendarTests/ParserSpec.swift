@@ -101,8 +101,24 @@ class ParserSpec: QuickSpec {
                 
                 let calendar = result.value!
                 expect(calendar.events.count).to(equal(3))
+            }
+        }
+
+        describe("parse wimdu") {
+            it("should parse a wimdu calendar correctly") {
+                guard
+                    let path = testBumdle().path(forResource: "wimdu", ofType: "ics"),
+                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
+                    else {
+                        fail("unable to load resource")
+                        return
+                }
                 
-                print(Writer.write(calendar: calendar))
+                let result = Parser.parse(ics: ics)
+                expect(result.value).toNot(beNil())
+                
+                let calendar = result.value!
+                expect(calendar.events.count).to(equal(3))
             }
         }
     }

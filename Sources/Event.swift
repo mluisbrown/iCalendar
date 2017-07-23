@@ -17,19 +17,17 @@ struct Event {
     let location: String?
 
     init?(with encoded: [String:EventValueRepresentable]) {
-        guard let uid = encoded[Keys.uid]?.textValue,
-            let startDate = encoded[Keys.startDate]?.dateValue,
+        guard let startDate = encoded[Keys.startDate]?.dateValue,
             let endDate = encoded[Keys.endDate]?.dateValue else {
                 return nil
         }
         
-        self.uid = uid
+        self.uid = encoded[Keys.uid]?.textValue ?? UUID().uuidString
         self.startDate = startDate
         self.endDate = endDate
         description = encoded[Keys.description]?.textValue
         summary = encoded[Keys.summary]?.textValue
-        location = encoded[Keys.location]?.textValue
-        
+        location = encoded[Keys.location]?.textValue        
     }
     
     var encoded: [String:EventValueRepresentable] {

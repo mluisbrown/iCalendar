@@ -15,7 +15,7 @@ struct Writer {
         return formatter
     }()
     
-    static let iCalFoldLength = 73
+    static let iCalFoldLength = 73 // see https://tools.ietf.org/html/rfc5545#section-3.1
     static let calendarHeader =
         """
         BEGIN:VCALENDAR\r

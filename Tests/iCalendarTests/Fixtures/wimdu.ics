@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+PRODID;X-RICAL-TZSOURCE=TZINFO:-//com.denhaven2/NONSGML ri_cal gem//EN
+CALSCALE:GREGORIAN
+VERSION:2.0
+BEGIN:VEVENT
+DTEND;VALUE=DATE:20151006
+DTSTART;VALUE=DATE:20151001
+DESCRIPTION:Centrally Located Apartment https://www.wimdu.pt/user/reserva
+ tions/DUXV2Q40
+SUMMARY:Julia Kleinwächter
+LOCATION:Escadinhas das Olarias 9\, 1100-375 Lisboa\, Portugal
+END:VEVENT
+BEGIN:VEVENT
+DTEND;VALUE=DATE:20160124
+DTSTART;VALUE=DATE:20160110
+DESCRIPTION:Centrally Located Apartment https://www.wimdu.pt/user/reserva
+ tions/ZPPFGBPR
+SUMMARY:Karine  charobert
+LOCATION:Escadinhas das Olarias 9\, 1100-375 Lisboa\, Portugal
+END:VEVENT
+BEGIN:VEVENT
+DTEND;VALUE=DATE:20160518
+DTSTART;VALUE=DATE:20160507
+DESCRIPTION:Centrally Located Apartment https://www.wimdu.pt/user/reserva
+ tions/9XVGWQG2
+SUMMARY:Sakari Korvenranta
+LOCATION:Escadinhas das Olarias 9\, 1100-375 Lisboa\, Portugal
+END:VEVENT
+END:VCALENDAR

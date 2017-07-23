@@ -20,6 +20,12 @@
 		4C2016A21F0B77BE00364B9C /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2016A11F0B77BE00364B9C /* EventSpec.swift */; };
 		4C2016A31F0B77BE00364B9C /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2016A11F0B77BE00364B9C /* EventSpec.swift */; };
 		4C2016A41F0B77BE00364B9C /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2016A11F0B77BE00364B9C /* EventSpec.swift */; };
+		4C224FB41F2550F100EAAE01 /* wimdu.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C224FB31F2550F100EAAE01 /* wimdu.ics */; };
+		4C224FB51F2550F100EAAE01 /* wimdu.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C224FB31F2550F100EAAE01 /* wimdu.ics */; };
+		4C224FB61F2550F100EAAE01 /* wimdu.ics in Resources */ = {isa = PBXBuildFile; fileRef = 4C224FB31F2550F100EAAE01 /* wimdu.ics */; };
+		4C224FB81F25527D00EAAE01 /* CalenderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */; };
+		4C224FB91F25527D00EAAE01 /* CalenderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */; };
+		4C224FBA1F25527D00EAAE01 /* CalenderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */; };
 		4C338C2B1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
 		4C338C2C1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
 		4C338C2D1ED0C77C005ACA65 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C338C2A1ED0C77C005ACA65 /* Parser.swift */; };
@@ -115,6 +121,8 @@
 		4C0EBD801EED9806009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		4C0EBD821EED981B009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		4C2016A11F0B77BE00364B9C /* EventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
+		4C224FB31F2550F100EAAE01 /* wimdu.ics */ = {isa = PBXFileReference; lastKnownFileType = text; name = wimdu.ics; path = Fixtures/wimdu.ics; sourceTree = "<group>"; };
+		4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSpec.swift; sourceTree = "<group>"; };
 		4C338C2A1ED0C77C005ACA65 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		4C338C301ED0E024005ACA65 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		4C338C311ED0E024005ACA65 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				4C338C4F1ED630C9005ACA65 /* airbnb.ics */,
+				4C224FB31F2550F100EAAE01 /* wimdu.ics */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -280,6 +289,7 @@
 				4C2016A11F0B77BE00364B9C /* EventSpec.swift */,
 				4C9CA48F1F1032E100EB01C4 /* WriterSpec.swift */,
 				4C9CA4931F10333300EB01C4 /* TestUtils.swift */,
+				4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */,
 			);
 			name = Tests;
 			path = Tests/iCalendarTests;
@@ -537,6 +547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C224FB41F2550F100EAAE01 /* wimdu.ics in Resources */,
 				4C338C501ED630C9005ACA65 /* airbnb.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C224FB51F2550F100EAAE01 /* wimdu.ics in Resources */,
 				4C338C511ED630C9005ACA65 /* airbnb.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C224FB61F2550F100EAAE01 /* wimdu.ics in Resources */,
 				4C338C521ED630C9005ACA65 /* airbnb.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +615,7 @@
 			files = (
 				4C338C381ED0E108005ACA65 /* ParserSpec.swift in Sources */,
 				4C9CA4901F1032E100EB01C4 /* WriterSpec.swift in Sources */,
+				4C224FB81F25527D00EAAE01 /* CalenderSpec.swift in Sources */,
 				4C2016A21F0B77BE00364B9C /* EventSpec.swift in Sources */,
 				4C9CA4941F10333300EB01C4 /* TestUtils.swift in Sources */,
 			);
@@ -658,6 +672,7 @@
 			files = (
 				4C338C391ED0E108005ACA65 /* ParserSpec.swift in Sources */,
 				4C9CA4911F1032E100EB01C4 /* WriterSpec.swift in Sources */,
+				4C224FB91F25527D00EAAE01 /* CalenderSpec.swift in Sources */,
 				4C2016A31F0B77BE00364B9C /* EventSpec.swift in Sources */,
 				4C9CA4951F10333300EB01C4 /* TestUtils.swift in Sources */,
 			);
@@ -669,6 +684,7 @@
 			files = (
 				4C338C3A1ED0E108005ACA65 /* ParserSpec.swift in Sources */,
 				4C9CA4921F1032E100EB01C4 /* WriterSpec.swift in Sources */,
+				4C224FBA1F25527D00EAAE01 /* CalenderSpec.swift in Sources */,
 				4C2016A41F0B77BE00364B9C /* EventSpec.swift in Sources */,
 				4C9CA4961F10333300EB01C4 /* TestUtils.swift in Sources */,
 			);
