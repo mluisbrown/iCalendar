@@ -88,10 +88,7 @@ class ParserSpec: QuickSpec {
         
         describe("parse airbnb") {
             it("should parse an airbnb calendar correctly") {
-                guard
-                    let path = testBumdle().path(forResource: "airbnb", ofType: "ics"),
-                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
-                else {
+                guard let ics = testResource(from: "airbnb.ics") else {
                     fail("unable to load resource")
                     return
                 }
@@ -106,12 +103,9 @@ class ParserSpec: QuickSpec {
 
         describe("parse wimdu") {
             it("should parse a wimdu calendar correctly") {
-                guard
-                    let path = testBumdle().path(forResource: "wimdu", ofType: "ics"),
-                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
-                    else {
-                        fail("unable to load resource")
-                        return
+                guard let ics = testResource(from: "wimdu.ics") else {
+                    fail("unable to load resource")
+                    return
                 }
                 
                 let result = Parser.parse(ics: ics)

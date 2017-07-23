@@ -30,12 +30,9 @@ class WriterSpec: QuickSpec {
         
         describe("write event") {
             it("write out a parsed airbnb event correctly") {
-                guard
-                    let path = testBumdle().path(forResource: "airbnb", ofType: "ics"),
-                    let ics = try? String(contentsOf: URL(fileURLWithPath: path))
-                    else {
-                        fail("unable to load resource")
-                        return
+                guard let ics = testResource(from: "airbnb.ics") else {
+                    fail("unable to load resource")
+                    return
                 }
                 
                 let result = Parser.parse(ics: ics)

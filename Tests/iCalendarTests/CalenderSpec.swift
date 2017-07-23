@@ -18,10 +18,8 @@ class CalendarSpec: QuickSpec {
         describe("merge airbnb and wimdu calendar") {
             it("should merge an airbnb and wimdu calendar sorted by start date") {
                 guard
-                    let airbnbPath = testBumdle().path(forResource: "airbnb", ofType: "ics"),
-                    let wimduPath = testBumdle().path(forResource: "wimdu", ofType: "ics"),
-                    let airbnb = try? String(contentsOf: URL(fileURLWithPath: airbnbPath)),
-                    let wimdu = try? String(contentsOf: URL(fileURLWithPath: wimduPath))
+                    let airbnb = testResource(from: "airbnb.ics"),
+                    let wimdu = testResource(from: "wimdu.ics")
                     else {
                         fail("unable to load resources")
                         return
