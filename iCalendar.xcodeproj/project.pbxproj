@@ -121,7 +121,7 @@
 		4C0EBD801EED9806009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		4C0EBD821EED981B009A9A12 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		4C2016A11F0B77BE00364B9C /* EventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
-		4C224FB31F2550F100EAAE01 /* wimdu.ics */ = {isa = PBXFileReference; lastKnownFileType = text; name = wimdu.ics; path = Fixtures/wimdu.ics; sourceTree = "<group>"; };
+		4C224FB31F2550F100EAAE01 /* wimdu.ics */ = {isa = PBXFileReference; lastKnownFileType = text; path = wimdu.ics; sourceTree = "<group>"; };
 		4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSpec.swift; sourceTree = "<group>"; };
 		4C338C2A1ED0C77C005ACA65 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		4C338C301ED0E024005ACA65 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		4C338C3B1ED0FBF9005ACA65 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4C338C401ED0FC26005ACA65 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		4C338C451ED0FC48005ACA65 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		4C338C4F1ED630C9005ACA65 /* airbnb.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = airbnb.ics; path = Fixtures/airbnb.ics; sourceTree = "<group>"; };
+		4C338C4F1ED630C9005ACA65 /* airbnb.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airbnb.ics; sourceTree = "<group>"; };
 		4C338C531ED8BA2A005ACA65 /* EventValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventValue.swift; sourceTree = "<group>"; };
 		4C9CA48A1F102EEF00EB01C4 /* RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
 		4C9CA48F1F1032E100EB01C4 /* WriterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterSpec.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				4C338C4F1ED630C9005ACA65 /* airbnb.ics */,
 				4C224FB31F2550F100EAAE01 /* wimdu.ics */,
 			);
-			name = Fixtures;
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		4C5F7E331F27ED25004EA6DB /* iCalendar */ = {
@@ -245,6 +245,19 @@
 				4C9CA48A1F102EEF00EB01C4 /* RegEx.swift */,
 			);
 			path = iCalendar;
+			sourceTree = "<group>";
+		};
+		4C9043441F27F20600BB06BA /* iCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C338C4E1ED630A6005ACA65 /* Fixtures */,
+				4C338C371ED0E108005ACA65 /* ParserSpec.swift */,
+				4C2016A11F0B77BE00364B9C /* EventSpec.swift */,
+				4C9CA48F1F1032E100EB01C4 /* WriterSpec.swift */,
+				4C9CA4931F10333300EB01C4 /* TestUtils.swift */,
+				4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */,
+			);
+			path = iCalendarTests;
 			sourceTree = "<group>";
 		};
 		52D6D9721BEFF229002C0205 = {
@@ -292,15 +305,9 @@
 		8933C7831EB5B7EB000D00A4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4C338C4E1ED630A6005ACA65 /* Fixtures */,
-				4C338C371ED0E108005ACA65 /* ParserSpec.swift */,
-				4C2016A11F0B77BE00364B9C /* EventSpec.swift */,
-				4C9CA48F1F1032E100EB01C4 /* WriterSpec.swift */,
-				4C9CA4931F10333300EB01C4 /* TestUtils.swift */,
-				4C224FB71F25527D00EAAE01 /* CalenderSpec.swift */,
+				4C9043441F27F20600BB06BA /* iCalendarTests */,
 			);
-			name = Tests;
-			path = Tests/iCalendarTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		DD7502721C68FC1B006590AF /* Frameworks */ = {
