@@ -3,4 +3,7 @@ import XCTest
 
 XCTMain([
     testCase(ParserSpec.allTests),
+    testCase(WriterSpec.allTests),
+    testCase(EventSpec.allTests),
+    testCase(CalendarSpec.allTests)
 ])
