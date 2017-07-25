@@ -232,6 +232,21 @@
 			name = Fixtures;
 			sourceTree = "<group>";
 		};
+		4C5F7E331F27ED25004EA6DB /* iCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				4C338C2A1ED0C77C005ACA65 /* Parser.swift */,
+				4C338C401ED0FC26005ACA65 /* Calendar.swift */,
+				4C338C451ED0FC48005ACA65 /* Event.swift */,
+				4C338C3B1ED0FBF9005ACA65 /* Extensions.swift */,
+				4C338C531ED8BA2A005ACA65 /* EventValue.swift */,
+				4C0EBD771EED9016009A9A12 /* Pipe.swift */,
+				4CD848111F0D9EEE00530511 /* Writer.swift */,
+				4C9CA48A1F102EEF00EB01C4 /* RegEx.swift */,
+			);
+			path = iCalendar;
+			sourceTree = "<group>";
+		};
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
@@ -269,14 +284,7 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4C338C2A1ED0C77C005ACA65 /* Parser.swift */,
-				4C338C401ED0FC26005ACA65 /* Calendar.swift */,
-				4C338C451ED0FC48005ACA65 /* Event.swift */,
-				4C338C3B1ED0FBF9005ACA65 /* Extensions.swift */,
-				4C338C531ED8BA2A005ACA65 /* EventValue.swift */,
-				4C0EBD771EED9016009A9A12 /* Pipe.swift */,
-				4CD848111F0D9EEE00530511 /* Writer.swift */,
-				4C9CA48A1F102EEF00EB01C4 /* RegEx.swift */,
+				4C5F7E331F27ED25004EA6DB /* iCalendar */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

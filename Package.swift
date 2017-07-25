@@ -17,8 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "iCalendar",
-            dependencies: ["Result"],
-            path: "Sources"),
+            dependencies: ["Result"]),
         .testTarget(
             name: "iCalendarTests",
             dependencies: ["iCalendar", "Quick", "Nimble"]),
