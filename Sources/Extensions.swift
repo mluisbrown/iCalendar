@@ -18,7 +18,7 @@ extension String {
     }
     
     func numberOfMatches(of regex: RegEx) -> Int {
-        return regex.compiled.numberOfMatches(in: self, range: self.nsRange)
+        return regex.compiled.numberOfMatches(in: self, options: [], range: self.nsRange)
     }
 }
 

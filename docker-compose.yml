@@ -1,0 +1,13 @@
+version: '2.0'
+
+services:
+  commander:
+    # image: kylef/swiftenv:swift3
+    build: .
+    volumes:
+      - './Sources:/code/Sources'
+      - './Tests:/code/Tests'
+      - './Packages:/code/Packages'
+      - './Package.swift:/code/Package.swift'
+    working_dir: /code
+    command: swift build
