@@ -1,10 +1,9 @@
-//
+
 //  ParserSpec.swift
 //  iCalendar
 //
 //  Created by Michael Brown on 20/05/2017.
 //  Copyright © 2017 iCalendar. All rights reserved.
-//
 
 import Foundation
 import Result
@@ -45,25 +44,25 @@ class ParserSpec: QuickSpec {
                 expect(lines[2]).to(equal("Line3 Hello"))
             }
         }
-        
+
         describe("unescape") {
             it("should unescape escaped characters") {
                 let unescaped = Parser.unescape("Newline: \\n Comma: \\, Semicolon: \\; Backslash \\\\")
                 expect(unescaped).to(equal("Newline: \n Comma: , Semicolon: ; Backslash \\"))
             }
         }
-        
+
         describe("parseLineFromLine") {
             it("should split a line into key, params and a value") {
                 let result = Parser.parse(line: "DTEND;VALUE=DATE:20160614")
                 expect(result.value).toNot(beNil())
-                
+
                 let kpv = result.value!
                 expect(kpv.key).to(equal("DTEND"))
                 expect(kpv.params?["VALUE"]).to(equal("DATE"))
                 expect(kpv.value).to(equal("20160614"))
             }
-            
+
             it("should parse multiple params") {
                 let result = Parser.parse(line: "DTEND;VALUE=DATE;FOO=BAR:20160614")
                 expect(result.value).toNot(beNil())
@@ -85,17 +84,17 @@ class ParserSpec: QuickSpec {
                 expect(kpv.params).to(beNil())
             }
         }
-        
+
         describe("parse airbnb") {
             it("should parse an airbnb calendar correctly") {
                 guard let ics = testResource(from: "airbnb.ics") else {
                     fail("unable to load resource")
                     return
                 }
-                
+
                 let result = Parser.parse(ics: ics)
                 expect(result.value).toNot(beNil())
-                
+
                 let calendar = result.value!
                 expect(calendar.events.count).to(equal(3))
             }
@@ -107,10 +106,10 @@ class ParserSpec: QuickSpec {
                     fail("unable to load resource")
                     return
                 }
-                
+
                 let result = Parser.parse(ics: ics)
                 expect(result.value).toNot(beNil())
-                
+
                 let calendar = result.value!
                 expect(calendar.events.count).to(equal(3))
             }

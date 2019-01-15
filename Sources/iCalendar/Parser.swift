@@ -58,7 +58,7 @@ struct Parser {
         let normalized = ics.replace(regex: .fold, with: "")
             .replace(regex: .lineEnding, with: String(newLine))
         
-        return normalized.characters.split(separator: newLine).map(String.init)
+        return normalized.split(separator: newLine).map(String.init)
     }
     
     static func unescape(_ text: String) -> String {
@@ -74,7 +74,7 @@ struct Parser {
             return date + "T120000Z"
         }
         
-        if date.characters.last != "Z" {
+        if date.last != "Z" {
             return date + "Z"
         }
         
@@ -93,7 +93,7 @@ struct Parser {
         return params.reduce([String:String]()) {
             resultIn, param in
             var result = resultIn
-            let split = param.characters.split(separator: "=", maxSplits: 1)
+            let split = param.split(separator: "=", maxSplits: 1)
             
             if let paramKey = split.first,
                 let paramVal = split.last {
@@ -104,7 +104,7 @@ struct Parser {
     }
     
     static func parse(line: String) -> Result<ParsedLine, ParserError> {
-        let valueSplit = line.characters.split(separator: ":", maxSplits: 1)
+        let valueSplit = line.split(separator: ":", maxSplits: 1)
         guard valueSplit.count == 2,
             let vsFirst = valueSplit.first,
             let vsLast = valueSplit.last else { return .failure(ParserError.noColon(line)) }
@@ -126,7 +126,7 @@ struct Parser {
             let parsedCtx = try lines.reduce(Context()) {
                 ctxIn, line in
                 
-                let parsedLine = try parse(line: line).dematerialize()
+                let parsedLine = try parse(line: line).get()
                 var ctx = ctxIn;
                 
                 switch parsedLine.key {

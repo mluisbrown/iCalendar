@@ -55,10 +55,10 @@ struct Writer {
     }
     
     static func fold(_ line: String, at foldLength: Int = iCalFoldLength) -> String {
-        return line.characters.reduce("") {
+        return line.reduce("") {
             let result = $0 + String($1)
             let splitCount = result.numberOfMatches(of: .fold)
-            return (result.characters.count - splitCount) % foldLength == 0 ? result + "\r\n " : result
+            return (result.count - splitCount) % foldLength == 0 ? result + "\r\n " : result
         }
     }
     

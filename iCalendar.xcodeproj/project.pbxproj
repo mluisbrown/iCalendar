@@ -71,6 +71,18 @@
 		4CD848141F0D9EEE00530511 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD848111F0D9EEE00530511 /* Writer.swift */; };
 		4CD848151F0D9EEE00530511 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD848111F0D9EEE00530511 /* Writer.swift */; };
 		52D6D9871BEFF229002C0205 /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* iCalendar.framework */; };
+		7417D01B21EE5C5A0001BCB1 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD7C1EED97D0009A9A12 /* Result.framework */; };
+		7417D02021EE60990001BCB1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7417D01C21EE5C5A0001BCB1 /* Quick.framework */; };
+		7417D02121EE60990001BCB1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7417D01D21EE5C5A0001BCB1 /* Nimble.framework */; };
+		7417D02621EE61130001BCB1 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D02321EE61130001BCB1 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7417D02721EE61130001BCB1 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D02421EE61130001BCB1 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7417D02821EE61130001BCB1 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D02521EE61130001BCB1 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7417D02921EE615B0001BCB1 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0EBD821EED981B009A9A12 /* Result.framework */; };
+		7417D02C21EE615C0001BCB1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7417D02A21EE615B0001BCB1 /* Nimble.framework */; };
+		7417D02D21EE615C0001BCB1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7417D02B21EE615C0001BCB1 /* Quick.framework */; };
+		7417D03221EE617A0001BCB1 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D02F21EE617A0001BCB1 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7417D03321EE617A0001BCB1 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D03021EE617A0001BCB1 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7417D03421EE617A0001BCB1 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7417D03121EE617A0001BCB1 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD7502881C68FEDE006590AF /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* iCalendar.framework */; };
 		DD7502921C690C7A006590AF /* iCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* iCalendar.framework */; };
 /* End PBXBuildFile section */
@@ -112,6 +124,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7417D02221EE60B50001BCB1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7417D02621EE61130001BCB1 /* Nimble.framework in CopyFiles */,
+				7417D02721EE61130001BCB1 /* Quick.framework in CopyFiles */,
+				7417D02821EE61130001BCB1 /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7417D02E21EE61600001BCB1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7417D03221EE617A0001BCB1 /* Result.framework in CopyFiles */,
+				7417D03321EE617A0001BCB1 /* Quick.framework in CopyFiles */,
+				7417D03421EE617A0001BCB1 /* Nimble.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +177,16 @@
 		52D6D9E21BEFFF6E002C0205 /* iCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* iCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* iCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7417D01C21EE5C5A0001BCB1 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		7417D01D21EE5C5A0001BCB1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		7417D02321EE61130001BCB1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		7417D02421EE61130001BCB1 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		7417D02521EE61130001BCB1 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		7417D02A21EE615B0001BCB1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/tvOS/Nimble.framework; sourceTree = "<group>"; };
+		7417D02B21EE615C0001BCB1 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/tvOS/Quick.framework; sourceTree = "<group>"; };
+		7417D02F21EE617A0001BCB1 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		7417D03021EE617A0001BCB1 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/tvOS/Quick.framework; sourceTree = "<group>"; };
+		7417D03121EE617A0001BCB1 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/tvOS/Nimble.framework; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* iCalendar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalendar.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* iCalendarTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalendarTests.plist; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* iCalendar-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iCalendar-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7417D02021EE60990001BCB1 /* Quick.framework in Frameworks */,
+				7417D02121EE60990001BCB1 /* Nimble.framework in Frameworks */,
+				7417D01B21EE5C5A0001BCB1 /* Result.framework in Frameworks */,
 				52D6D9871BEFF229002C0205 /* iCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,6 +252,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7417D02C21EE615C0001BCB1 /* Nimble.framework in Frameworks */,
+				7417D02D21EE615C0001BCB1 /* Quick.framework in Frameworks */,
+				7417D02921EE615B0001BCB1 /* Result.framework in Frameworks */,
 				DD7502921C690C7A006590AF /* iCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +265,10 @@
 		4C338C2F1ED0E024005ACA65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7417D01D21EE5C5A0001BCB1 /* Nimble.framework */,
+				7417D01C21EE5C5A0001BCB1 /* Quick.framework */,
+				7417D02A21EE615B0001BCB1 /* Nimble.framework */,
+				7417D02B21EE615C0001BCB1 /* Quick.framework */,
 				4C0EBD821EED981B009A9A12 /* Result.framework */,
 				4C0EBD801EED9806009A9A12 /* Result.framework */,
 				4C0EBD7E1EED97EA009A9A12 /* Result.framework */,
@@ -263,6 +319,12 @@
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
+				7417D02321EE61130001BCB1 /* Nimble.framework */,
+				7417D03121EE617A0001BCB1 /* Nimble.framework */,
+				7417D02421EE61130001BCB1 /* Quick.framework */,
+				7417D03021EE617A0001BCB1 /* Quick.framework */,
+				7417D02521EE61130001BCB1 /* Result.framework */,
+				7417D02F21EE617A0001BCB1 /* Result.framework */,
 				8933C7811EB5B7E0000D00A4 /* Sources */,
 				8933C7831EB5B7EB000D00A4 /* Tests */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
@@ -385,6 +447,7 @@
 				52D6D9821BEFF229002C0205 /* Sources */,
 				52D6D9831BEFF229002C0205 /* Frameworks */,
 				52D6D9841BEFF229002C0205 /* Resources */,
+				7417D02221EE60B50001BCB1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -476,6 +539,7 @@
 				DD7502891C690C7A006590AF /* Sources */,
 				DD75028A1C690C7A006590AF /* Frameworks */,
 				DD75028B1C690C7A006590AF /* Resources */,
+				7417D02E21EE61600001BCB1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -494,7 +558,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = iCalendar;
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {
@@ -738,12 +802,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -796,12 +862,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -858,7 +926,7 @@
 				PRODUCT_NAME = iCalendar;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -884,7 +952,7 @@
 				PRODUCT_NAME = iCalendar;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -892,12 +960,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iCalendar.iCalendar-iOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -905,12 +977,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iCalendar.iCalendar-iOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -934,7 +1010,7 @@
 				PRODUCT_NAME = iCalendar;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -961,7 +1037,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -987,7 +1063,7 @@
 				PRODUCT_NAME = iCalendar;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1014,7 +1090,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1043,7 +1119,7 @@
 				PRODUCT_NAME = iCalendar;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1071,7 +1147,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1091,7 +1167,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iCalendar.iCalendar-macOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1112,19 +1188,23 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 		DD7502961C690C7A006590AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iCalendar.iCalendar-tvOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -1132,13 +1212,17 @@
 		DD7502971C690C7A006590AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = Configs/iCalendarTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iCalendar.iCalendar-tvOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
